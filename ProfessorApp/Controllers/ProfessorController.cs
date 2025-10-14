@@ -44,6 +44,36 @@ namespace ProfessorApp.Controllers
             return View(professor);
         }
 
+        // GET: Professor/Edit/5
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            // Get professor by ID
+            var professor = _professorService.GetProfessorById(id);
+            if (professor == null)
+            {
+                return NotFound();
+            }
 
+            // Load departments for dropdown
+            ViewBag.Departments = _professorService.GetAllDepartments();
+
+            return View(professor);
+        }
+
+        // POST: Professor/Edit
+        [HttpPost]
+        public IActionResult Edit(Professor professor)
+        {
+            if (ModelState.IsValid)
+            {
+                _professorService.UpdateProfessor(professor);
+                return RedirectToAction("List");
+            }
+
+            // Reload dropdown if validation fails
+            ViewBag.Departments = _professorService.GetAllDepartments();
+            return View(professor);
+        }
     }
 }

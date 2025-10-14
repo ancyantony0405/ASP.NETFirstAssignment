@@ -1,6 +1,6 @@
 ﻿@model PatientRegistration.Models.Patient
 
-<h4>New Patient Registration</h4>
+<h4>Edit Patient</h4>
 <form asp-action="Edit" method="post">
     <!--Id-->
     <div class="form-group">
@@ -43,15 +43,15 @@
             <option value="">Select Membership</option>
             @foreach (var m in ViewBag.Memberships)
             {
-            if (Model.MembershipId == m.MembershipId)
-            {
-                <option value="@m.MembershipId" selected>@m.MemberDescription</option>
+                if (Model.MembershipId == m.MembershipId)
+                {
+                    <option value="@m.MembershipId" selected>@m.MemberDescription</option>
+                }
+                else
+                {
+                    <option value="@m.MembershipId">@m.MemberDescription</option>
+                }
             }
-            else
-            {
-                <option value="@m.MembershipId">@m.MemberDescription</option>
-            }
-        }
         </select>
     </div>
     <div class="form-group">

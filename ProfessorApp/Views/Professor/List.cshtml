@@ -40,13 +40,16 @@
                 <td>@Html.DisplayFor(modelItem => item.DateOfBirth)</td>
                 <td>@Html.DisplayFor(modelItem => item.Gender)</td>
                 <td>
+                <td>
                     <a asp-controller="Professor" asp-action="Edit"
-                       asp-route-id="@item.ManagerId"
+                       asp-route-id="@item.ProfessorId"
                        class="btn btn-secondary">Edit</a>
                     |
                     <a asp-controller="Professor" asp-action="Delete"
-                       asp-rout-id="@item.ManagerId"
+                       asp-route-id="@item.ProfessorId"
                        class="btn btn-danger">Remove</a>
+                </td>
+
                 </td>
             </tr>
         }
