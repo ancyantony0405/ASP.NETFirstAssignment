@@ -27,5 +27,15 @@ namespace ProfessorApp.Services
         {
             _professorRepository.AddProfessor(professor);
         }
+
+        public Professor GetProfessorById(int professorId)
+        {
+            return _professorRepository.GetProfessorById(professorId);
+        }
+
+        public void UpdateProfessor(Professor professor)
+        {
+            _professorRepository.UpdateProfessor(professor);
+        }
     }
 }

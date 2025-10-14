@@ -13,5 +13,11 @@ namespace ProfessorApp.Repositories
         // Insert a new professor
         public void AddProfessor(Professor professor);
 
+        // Get professor by ID
+        Professor GetProfessorById(int professorId);
+
+        // Update professor details
+        void UpdateProfessor(Professor professor);
+
     }
 }

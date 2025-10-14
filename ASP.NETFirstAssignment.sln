@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatientRegistration", "ASP.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProfessorApp", "ProfessorApp\ProfessorApp.csproj", "{CA92AB8D-1146-4ADF-AB00-B250B6D37A70}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserLogin", "UserLogin\UserLogin.csproj", "{7D444550-3BFA-4A6F-B3E6-C67492DF86FF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{CA92AB8D-1146-4ADF-AB00-B250B6D37A70}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA92AB8D-1146-4ADF-AB00-B250B6D37A70}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA92AB8D-1146-4ADF-AB00-B250B6D37A70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D444550-3BFA-4A6F-B3E6-C67492DF86FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D444550-3BFA-4A6F-B3E6-C67492DF86FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D444550-3BFA-4A6F-B3E6-C67492DF86FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D444550-3BFA-4A6F-B3E6-C67492DF86FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

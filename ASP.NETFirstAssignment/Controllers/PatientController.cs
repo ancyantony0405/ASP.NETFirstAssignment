@@ -30,7 +30,6 @@ namespace PatientRegistration.Controllers
             var memberships = _patientService.GetAllMemberships();
             ViewBag.Memberships = memberships;
 
-            // Create a JSON object for JS
             ViewBag.MembershipData = memberships.ToDictionary(m => m.MembershipId, m => new { m.MemberDescription, m.InsuredAmount });
 
             return View();
@@ -48,17 +47,47 @@ namespace PatientRegistration.Controllers
                     _patientService.AddPatient(patient);
                     return RedirectToAction("List");
                 }
-
-                // Important: reload memberships if validation fails
                 ViewBag.Memberships = _patientService.GetAllMemberships();
                 return View(patient);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-
-                // Also reload memberships in case of exception
                 ViewBag.Memberships = _patientService.GetAllMemberships();
+                return View(patient);
+            }
+        }
+
+        // GET: Patient/Edit
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var patient = _patientService.GetPatientById(id);
+            if (patient == null)
+            {
+                return NotFound();
+            }
+            ViewBag.Memberships = _patientService.GetAllMemberships();
+
+            return View(patient);
+        }
+
+
+        // 🟢 POST: Patient/Edit
+        [HttpPost]
+        public IActionResult Edit(Patient patient)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _patientService.EditPatient(patient);
+                    return RedirectToAction("List"); 
+                }
+                return View(patient);
+            }
+            catch
+            {
                 return View(patient);
             }
         }

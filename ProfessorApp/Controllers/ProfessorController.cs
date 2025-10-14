@@ -40,10 +40,10 @@ namespace ProfessorApp.Controllers
                 _professorService.AddProfessor(professor);
                 return RedirectToAction("List");
             }
-
-            // reload departments if form validation fails
             ViewBag.Departments = _professorService.GetAllDepartments();
             return View(professor);
         }
+
+
     }
 }

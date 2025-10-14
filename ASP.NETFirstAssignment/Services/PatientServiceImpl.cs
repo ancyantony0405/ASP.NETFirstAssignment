@@ -29,6 +29,14 @@ namespace PatientRegistration.Services
              _patientRepository.InsertPatient(patient);
         }
 
-        
+        public Patient GetPatientById(int patientId)
+        {
+            return _patientRepository.GetPatientById(patientId);
+        }
+
+        public void EditPatient(Patient patient)
+        {
+            _patientRepository.EditPatient(patient);
+        }
     }
 }

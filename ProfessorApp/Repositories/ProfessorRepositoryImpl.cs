@@ -99,5 +99,69 @@ namespace ProfessorApp.Repositories
         }
         #endregion
 
+        #region Get professor by ID
+        public Professor GetProfessorById(int professorId)
+        {
+            Professor professor = null;
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_GetProfessorById", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ProfessorId", professorId);
+
+                    conn.Open();
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            professor = new Professor
+                            {
+                                ProfessorId = (int)reader["ProfessorId"],
+                                ManagerId = reader["ManagerId"] as int?,
+                                FirstName = reader["FirstName"].ToString(),
+                                LastName = reader["LastName"].ToString(),
+                                DeptNo = (int)reader["DeptNo"],
+                                DeptName = reader["DeptName"].ToString(),
+                                Salary = (decimal)reader["Salary"],
+                                JoiningDate = (DateTime)reader["JoiningDate"],
+                                DateOfBirth = (DateTime)reader["DateOfBirth"],
+                                Gender = reader["Gender"].ToString()
+                            };
+                        }
+                    }
+                }
+            }
+
+            return professor;
+        }
+        #endregion
+
+        #region Update professor details
+        public void UpdateProfessor(Professor professor)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_UpdateProfessor", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@ProfessorId", professor.ProfessorId);
+                    cmd.Parameters.AddWithValue("@ManagerId", (object)professor.ManagerId ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@FirstName", professor.FirstName);
+                    cmd.Parameters.AddWithValue("@LastName", professor.LastName);
+                    cmd.Parameters.AddWithValue("@DeptNo", professor.DeptNo);
+                    cmd.Parameters.AddWithValue("@Salary", professor.Salary);
+                    cmd.Parameters.AddWithValue("@JoiningDate", professor.JoiningDate);
+                    cmd.Parameters.AddWithValue("@DateOfBirth", professor.DateOfBirth);
+                    cmd.Parameters.AddWithValue("@Gender", professor.Gender);
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery(); 
+                }
+            }
+        }
+        #endregion
     }
 }

@@ -7,5 +7,7 @@ namespace PatientRegistration.Services
         IEnumerable<Patient> GetAllPatients();
         List<Membership> GetAllMemberships();
         void AddPatient(Patient patient);
+        Patient GetPatientById(int patientId);
+        void EditPatient(Patient patient);
     }
 }

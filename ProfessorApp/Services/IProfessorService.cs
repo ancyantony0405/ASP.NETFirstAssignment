@@ -7,6 +7,8 @@ namespace ProfessorApp.Services
         IEnumerable<Professor> GetAllProfessor();
         List<Department> GetAllDepartments();
         void AddProfessor(Professor professor);
+        Professor GetProfessorById(int professorId);
+        void UpdateProfessor(Professor professor);
     }
 }
 
