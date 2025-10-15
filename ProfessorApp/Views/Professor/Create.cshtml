@@ -4,19 +4,19 @@
     var departments = ViewBag.Departments as List<ProfessorApp.Models.Department>;
 }
 
-<h3 class="mb-4">Add New Professor</h3>
+<h3>Add New Professor</h3>
 
-<form asp-action="Create" method="post" class="border rounded p-4 shadow-sm bg-light">
+<form asp-action="Create" method="post">
     <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
     <div class="row">
-        <div class="col-md-6 mb-3">
+        <div class="form-group">
             <label asp-for="ManagerId" class="form-label">Manager ID</label>
             <input asp-for="ManagerId" class="form-control" />
             <span asp-validation-for="ManagerId" class="text-danger"></span>
         </div>
 
-        <div class="col-md-6 mb-3">
+        <div class="form-group">
             <label asp-for="Gender" class="form-label">Gender</label>
             <select asp-for="Gender" class="form-select">
                 <option value="">-- Select Gender --</option>
@@ -29,13 +29,13 @@
     </div>
 
     <div class="row">
-        <div class="col-md-6 mb-3">
+        <div class="form-group">
             <label asp-for="FirstName" class="form-label">First Name</label>
             <input asp-for="FirstName" class="form-control" />
             <span asp-validation-for="FirstName" class="text-danger"></span>
         </div>
 
-        <div class="col-md-6 mb-3">
+        <div class="form-group">
             <label asp-for="LastName" class="form-label">Last Name</label>
             <input asp-for="LastName" class="form-control" />
             <span asp-validation-for="LastName" class="text-danger"></span>
@@ -43,7 +43,7 @@
     </div>
 
     <div class="row">
-        <div class="col-md-6 mb-3">
+        <div class="form-group">
             <label asp-for="DeptNo" class="form-label">Department</label>
             <select asp-for="DeptNo" class="form-select" id="DeptNo">
                 <option value="">-- Select Department --</option>
@@ -55,20 +55,20 @@
             <span asp-validation-for="DeptNo" class="text-danger"></span>
         </div>
 
-        <div class="col-md-6 mb-3">
+        <div class="form-group">
             <label asp-for="DeptName" class="form-label">Department Name</label>
             <input asp-for="DeptName" class="form-control" id="DeptName" readonly />
         </div>
     </div>
 
     <div class="row">
-        <div class="col-md-6 mb-3">
+        <div class="form-group">
             <label asp-for="Salary" class="form-label">Salary</label>
             <input asp-for="Salary" class="form-control" />
             <span asp-validation-for="Salary" class="text-danger"></span>
         </div>
 
-        <div class="col-md-6 mb-3">
+        <div class="form-group">
             <label asp-for="JoiningDate" class="form-label">Joining Date</label>
             <input asp-for="JoiningDate" type="date" class="form-control" />
             <span asp-validation-for="JoiningDate" class="text-danger"></span>
@@ -76,7 +76,7 @@
     </div>
 
     <div class="row">
-        <div class="col-md-6 mb-3">
+        <div class="form-group">
             <label asp-for="DateOfBirth" class="form-label">Date of Birth</label>
             <input asp-for="DateOfBirth" type="date" class="form-control" />
             <span asp-validation-for="DateOfBirth" class="text-danger"></span>
