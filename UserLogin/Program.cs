@@ -1,3 +1,5 @@
+using UserLogin.Repositories;
+
 namespace UserLogin
 {
     public class Program
@@ -8,6 +10,18 @@ namespace UserLogin
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            // Add session
+            builder.Services.AddDistributedMemoryCache(); // required for session storage
+            builder.Services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30); // session timeout
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+
+            // Add dependency injection for your repository
+            builder.Services.AddScoped<UserRepositoryImpl>();
 
             var app = builder.Build();
 
@@ -24,11 +38,14 @@ namespace UserLogin
 
             app.UseRouting();
 
+            // session middleware
+            app.UseSession();
+
             app.UseAuthorization();
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=User}/{action=Login}/{id?}");
 
             app.Run();
         }

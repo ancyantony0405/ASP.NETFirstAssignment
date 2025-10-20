@@ -1,0 +1,101 @@
+﻿@model IEnumerable<PatientRegistration.Models.Patient>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>List of patient</h1>
+<div class="container mt-3">
+    <div class="d-flex align-items-center">
+        <!--Add Employee-->
+        <button type="button" class="btn-secondary me-2"
+                data-bs-toggle="modal"
+                data-bs-target="#createPatientModal">
+            Add Patient or Create New
+        </button>
+        <!--Search Employee-->
+        <input type="text" id="searchInput" class="form-control me-2"
+               placeholder="Enter Name"
+               style="width:auto;flex-grow:1;">
+        <button id="searchButton" class="btn btn-primary">Search</button>
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PatientId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RegistrationNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PatientName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dob)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MemberDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InsuredAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MembershipId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PatientId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegistrationNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PatientName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dob)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MemberDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InsuredAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MembershipId)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

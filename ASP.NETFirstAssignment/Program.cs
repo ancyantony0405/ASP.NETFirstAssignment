@@ -40,7 +40,7 @@ namespace ASP.NETFirstAssignment
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Patient}/{action=List}/{id?}");
+                pattern: "{controller=PatientModal}/{action=Index}/{id?}");
 
             app.Run();
         }
